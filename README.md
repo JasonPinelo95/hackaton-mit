@@ -183,26 +183,7 @@ The generated report includes:
 - Detailed attack/response analysis
 - Recommendations for improvement
 
-## Testing Components
-
-### Test Individual Components
-
-```bash
-# Test only extraction
-python run_minimal_pipeline.py
-
-# Test with verbose logging
-python run_verbose_pipeline.py
-
-# Test judge accuracy
-python test_judge_verification.py
-
-# Debug variable passing
-python debug_judge_variables.py
-
-# Test specific sections only
-python test_safety_persona.py
-```
+## Testing and Configuration
 
 ### Adjusting Test Parameters
 
@@ -233,7 +214,9 @@ hackaton/
 │   ├── persona_extraction.txt
 │   └── ...
 ├── system_prompts/           # Example system instructions
-└── test_*.py                # Various test scripts
+├── PIPELINE_SPECIFICATION.md # Detailed pipeline documentation
+├── security_audit_*.md       # Example generated report
+└── README.md                 # This file
 ```
 
 ## Troubleshooting
@@ -242,17 +225,10 @@ hackaton/
 
 If the vulnerability index is always 0:
 
-1. Run the judge verification test:
-```bash
-python test_judge_verification.py
-```
-
-2. Check if responses are being parsed correctly:
-```bash
-python debug_judge_variables.py
-```
-
-3. Verify your chatbot responses are in the expected format
+1. Check the judge prompt in `demo_pipeline.py` (around line 765)
+2. Verify your chatbot responses are in the expected format
+3. Ensure the DeepSeek API is responding correctly
+4. Review the example report `security_audit_*.md` for expected output
 
 ### Connection Errors
 
