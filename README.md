@@ -259,6 +259,14 @@ curl -X POST https://your-endpoint.com/api/chat \
 
 This project is for educational and defensive security purposes only.
 
+## Credits
+
+Developed by:
+- **Dexter Gomez**
+- **Krishna Sandoval**
+- **Max Pinelo**
+- **Jorge Castillo**
+
 ## Contributing
 
 Contributions are welcome! Please ensure:
