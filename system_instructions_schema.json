@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "System Instructions Schema",
+  "description": "Schema for defining comprehensive system instructions for AI models",
+  "type": "object",
+  "properties": {
+    "objective": {
+      "type": "string",
+      "description": "What you want the model to achieve. Be specific and include any overarching objectives. Also called 'mission' or 'goal.'",
+      "examples": ["Your objective is to help students with math problems without directly giving them the answer."]
+    },
+    "persona": {
+      "type": "string",
+      "description": "Who or what the model is acting as. Also called 'role' or 'vision.'",
+      "examples": ["You are a math tutor here to help students with their math homework."]
+    },
+    "constraints": {
+      "type": "array",
+      "description": "Restrictions on what the model must adhere to when generating a response, including what the model can and can't do. Also called 'guardrails,' 'boundaries,' or 'controls.'",
+      "items": {
+        "type": "string"
+      },
+      "examples": [
+        [
+          "Don't give the answer to the student directly.",
+          "Instead, give hints at the next step towards solving the problem.",
+          "If the student is completely lost, give them the detailed steps to solve the problem."
+        ]
+      ]
+    },
+    "tone": {
+      "type": "string",
+      "description": "The tone of the response. You can also influence the style and tone by specifying a persona. Also called 'style,' 'voice,' or 'mood.'",
+      "examples": ["Respond in a casual and technical manner."]
+    },
+    "context": {
+      "type": "string",
+      "description": "Any information that the model needs to refer to in order to perform the task at hand. Also called 'background,' 'documents,' or 'input data.'",
+      "examples": ["A copy of the student's lesson plans for math."]
+    },
+    "few_shot_examples": {
+      "type": "array",
+      "description": "Examples of what the response should look like for a given prompt. Also called 'exemplars' or 'samples.'",
+      "items": {
+        "type": "object",
+        "properties": {
+          "input": {
+            "type": "string",
+            "description": "Example input prompt"
+          },
+          "output": {
+            "type": "string",
+            "description": "Expected output response"
+          }
+        },
+        "required": ["input", "output"]
+      },
+      "examples": [
+        [
+          {
+            "input": "I'm trying to calculate how many golf balls can fit into a box that has a one cubic meter volume. I've converted one cubic meter into cubic centimeters and divided it by the volume of a golf ball in cubic centimeters, but the system says my answer is wrong.",
+            "output": "Golf balls are spheres and cannot be packed into a space with perfect efficiency. Your calculations take into account the maximum packing efficiency of spheres."
+          }
+        ]
+      ]
+    },
+    "reasoning_steps": {
+      "type": "string",
+      "description": "Tell the model to explain its reasoning. This can sometimes improve the model's reasoning capability. Also called 'thinking steps.'",
+      "examples": ["Explain your reasoning step-by-step."]
+    },
+    "response_format": {
+      "type": "string",
+      "description": "The format that you want the response to be in. For example, you can tell the model to output the response in JSON, table, Markdown, paragraph, bulleted list, keywords, elevator pitch, and so on. Also called 'structure,' 'presentation,' or 'layout.'",
+      "examples": ["Format your response in Markdown."]
+    },
+    "recap": {
+      "type": "string",
+      "description": "Concise repeat of the key points of the prompt, especially the constraints and response format, at the end of the prompt.",
+      "examples": ["Don't give away the answer and provide hints instead. Always format your response in Markdown format."]
+    },
+    "safety_rules": {
+      "type": "array",
+      "description": "Grounds the questions to the mission of the bot. Also called 'safeguards.'",
+      "items": {
+        "type": "string"
+      },
+      "examples": [
+        []
+      ]
+    }
+  },
+  "required": ["objective", "safety_rules"],
+  "additionalProperties": false
+}
